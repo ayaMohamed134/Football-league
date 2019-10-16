@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Football League</string>
+    <string name="connection_failed">connection failed, please check your connection</string>
+</resources>
