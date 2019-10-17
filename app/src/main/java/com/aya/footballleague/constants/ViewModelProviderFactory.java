@@ -1,6 +1,7 @@
 package com.aya.footballleague.constants;
 
 import com.aya.footballleague.data.DataManager;
+import com.aya.footballleague.ui.Main.LeaguesList.LeaguesListViewModel;
 import com.aya.footballleague.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -30,10 +31,10 @@ public class ViewModelProviderFactory<V> extends ViewModelProvider.NewInstanceFa
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        /*if (modelClass.isAssignableFrom(SplashViewModel.class)) {
+        if (modelClass.isAssignableFrom(LeaguesListViewModel.class)) {
             //noinspection unchecked
-            return (T) new SplashViewModel(dataManager, schedulerProvider);
-        }*/
+            return (T) new LeaguesListViewModel(dataManager, schedulerProvider);
+        }
         throw new IllegalArgumentException("Unknown class name: " + modelClass.getName());
     }
 }

@@ -13,9 +13,7 @@ public interface DataManager extends PreferencesHelper, ApiHelper {
     enum LoggedInMode {
 
         LOGGED_IN_MODE_LOGGED_OUT(0),
-        LOGGED_IN_MODE_CLIENT_LOGIN(1),
-        LOGGED_IN_MODE_PROVIDER_LOGIN(2),
-        LOGGED_IN_MODE_PROVIDER_2IN1_LOGIN(3);
+        LOGGED_IN_MODE_CLIENT_LOGIN(1);
 
         private final int mType;
 
@@ -28,6 +26,4 @@ public interface DataManager extends PreferencesHelper, ApiHelper {
         }
 
     }
-    
-
 }

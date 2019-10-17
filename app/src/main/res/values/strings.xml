@@ -5,4 +5,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loading">Loading</string>
+    <string name="no_of_available_seasons">No. of available seasons:</string>
+    <string name="demo">Hello</string>
+    <string name="no_items_found">No items found</string>
+    <string name="retry">Retry</string>
 </resources>

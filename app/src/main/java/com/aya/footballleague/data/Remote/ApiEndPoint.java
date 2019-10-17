@@ -6,8 +6,6 @@ package com.aya.footballleague.data.Remote;
  */
 public final class ApiEndPoint {
 
-
-
     private ApiEndPoint() {
         // This class is not publicly instantiable
     }

@@ -3,11 +3,14 @@ package com.aya.footballleague.data;
 import android.content.Context;
 
 import com.aya.footballleague.data.Remote.ApiHelper;
+import com.aya.footballleague.data.model.LeaguesResponse;
 import com.aya.footballleague.data.prefs.PreferencesHelper;
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import io.reactivex.Single;
 
 /**
  * created by Aya mohamed on 8/2/2018.
@@ -30,4 +33,8 @@ public class AppDataManager implements DataManager {
         this.mContext = context;
     }
 
+    @Override
+    public Single<LeaguesResponse> getLeagues(String apiToken, String areasValue) {
+        return null;
+    }
 }
