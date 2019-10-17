@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt' //Must include
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
         applicationId "com.aya.footballleague"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -23,7 +23,9 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"http://api.football-data.org/v2/\"")
         }
 
         debug {
@@ -41,6 +43,7 @@ android {
 
     dataBinding {
         enabled = true
+        enabledForTests = true
     }
 
     packagingOptions {
@@ -60,16 +63,28 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.3.41'
-    implementation 'androidx.multidex:multidex:2.0.0'
-    implementation 'com.intuit.ssp:ssp-android:1.0.6'
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlinVersion"
+    implementation "androidx.multidex:multidex:$androidXMutidex"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.cardview:cardview:$cardVersion"
+    implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.annotation:annotation:$androidXAnnotations"
+    implementation "com.intuit.ssp:ssp-android:$intuit"
+    implementation "com.intuit.sdp:sdp-android:$intuit"
+    implementation 'com.wang.avi:library:2.1.3'
+
+    // Resolve conflicts between main and test APK:
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    androidTestImplementation "androidx.annotation:annotation:$androidXAnnotations"
+    androidTestImplementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
+    androidTestImplementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    androidTestImplementation "androidx.appcompat:appcompat:$appCompatVersion"
+    androidTestImplementation "com.google.android.material:material:$materialVersion"
     // reactive
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    // dependency injection
-    def daggerVer = 2.24
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
     // connection requests
     implementation 'com.android.volley:volley:1.1.1'
     // use in multipart requests
@@ -82,34 +97,32 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
-    implementation 'com.google.code.gson:gson:2.8.2'
-    // database
-    implementation 'androidx.room:room-rxjava2:2.0.0'
-    // Extensions = ViewModel + LiveData
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    // Architecture Components
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime:$archLifecycleVersion"
     // Room
-    implementation 'androidx.room:room-runtime:2.0.0'
-    kapt 'androidx.room:room-compiler:2.0.0'
-    // or latest version
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
+    // Navigation component
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
+    // dependency injection
     implementation "com.google.dagger:dagger:$daggerVer"
     implementation "com.google.dagger:dagger-android-support:$daggerVer"
     kapt "com.google.dagger:dagger-android-processor:$daggerVer"
     kapt "com.google.dagger:dagger-compiler:$daggerVer"
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
 
-    def nav_version = "2.1.0"
-    // Java
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
-
-    annotationProcessor 'androidx.databinding:databinding-compiler:3.5.0'
+    annotationProcessor 'androidx.databinding:databinding-compiler:3.5.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }
 configurations.all {
-    resolutionStrategy.force "com.android.support:support-annotations:28.0.0"
     resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
 }

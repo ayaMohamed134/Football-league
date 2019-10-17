@@ -1,5 +1,7 @@
 package com.aya.footballleague.di.builder;
 
+import com.aya.footballleague.ui.Main.Main;
+
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -11,5 +13,9 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilder {
 
+    @ContributesAndroidInjector(modules = {
+
+    })
+    abstract Main bindMainActivity();
     
 }

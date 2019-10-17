@@ -2,7 +2,7 @@ package com.aya.footballleague.di.component;
 
 import android.app.Application;
 
-import com.aya.footballleague.Constants.AppController;
+import com.aya.footballleague.constants.AppController;
 import com.aya.footballleague.di.builder.ActivityBuilder;
 import com.aya.footballleague.di.module.AppModule;
 
