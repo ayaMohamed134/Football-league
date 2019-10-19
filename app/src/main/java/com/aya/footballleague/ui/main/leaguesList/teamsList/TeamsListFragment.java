@@ -62,11 +62,13 @@ public class TeamsListFragment extends BaseFragment<FragmentTeamsListBinding, Te
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mTeamAdapter.setListener(this);
-
+        args = TeamsListFragmentArgs.fromBundle(requireArguments());
+        league_id = args.getLeagueId();
+        mTeamsListViewModel.fetchTeams(league_id);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFragmentTeamsListBinding = getViewDataBinding();
         setUp();
@@ -77,9 +79,6 @@ public class TeamsListFragment extends BaseFragment<FragmentTeamsListBinding, Te
         mFragmentTeamsListBinding.rvTeams.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mFragmentTeamsListBinding.rvTeams.setItemAnimator(new DefaultItemAnimator());
         mFragmentTeamsListBinding.rvTeams.setAdapter(mTeamAdapter);
-        args = TeamsListFragmentArgs.fromBundle(requireArguments());
-        league_id = args.getLeagueId();
-        mTeamsListViewModel.fetchTeams(league_id);
     }
 
     private void subscribeLiveData() {
