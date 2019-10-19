@@ -18,6 +18,8 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath false
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
             }
         }
     }

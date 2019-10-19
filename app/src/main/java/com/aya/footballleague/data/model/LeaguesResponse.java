@@ -1,11 +1,15 @@
 package com.aya.footballleague.data.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LeaguesResponse {
 
@@ -41,26 +45,33 @@ public class LeaguesResponse {
         return count.equals(objectResponse.count);
     }
 
+    @Entity(tableName = "league")
     public static class League {
 
-        private static final String AREAS = "areas";
 
         @Expose
+        @NotNull
+        @PrimaryKey
         @SerializedName("id")
+        @ColumnInfo(name = "id")
         private String id;
 
         @Expose
+        @NotNull
         @SerializedName("name")
+        @ColumnInfo(name = "name")
         private String name;
 
         @Expose
+        @NotNull
         @SerializedName("numberOfAvailableSeasons")
+        @ColumnInfo(name = "numberOfAvailableSeasons")
         private String numberOfAvailableSeasons;
 
-        public static Map<String, String> sendAreasValues(String areasValue) {
-            Map<String, String> map = new HashMap<>();
-            map.put(AREAS, areasValue);
-            return map;
+        public League(@NotNull String id, @NotNull String name, @NotNull String numberOfAvailableSeasons) {
+            this.id = id;
+            this.name = name;
+            this.numberOfAvailableSeasons = numberOfAvailableSeasons;
         }
 
         public String getId() {
@@ -73,6 +84,18 @@ public class LeaguesResponse {
 
         public String getNumberOfAvailableSeasons() {
             return numberOfAvailableSeasons;
+        }
+
+        public void setId(@NotNull String id) {
+            this.id = id;
+        }
+
+        public void setName(@NotNull String name) {
+            this.name = name;
+        }
+
+        public void setNumberOfAvailableSeasons(@NotNull String numberOfAvailableSeasons) {
+            this.numberOfAvailableSeasons = numberOfAvailableSeasons;
         }
 
         @Override

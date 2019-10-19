@@ -1,5 +1,7 @@
 package com.aya.footballleague.ui.main.leaguesList.teamsList.teamDetails;
 
+import android.util.Log;
+
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
@@ -35,17 +37,30 @@ public class TeamDetailsViewModel extends BaseViewModel {
 
     public void fetchTeam(String team_id) {
         setIsLoading(true);
-        getCompositeDisposable().add(getDataManager().getTeam(AppConstants.API_TOKEN, team_id)
+        getCompositeDisposable().add(getDataManager().getTeamData(AppConstants.API_TOKEN, team_id)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(team -> {
-                    if (team != null)
+                    if (team != null){
+                        saveDataLocal(team);
                         teamLiveData.setValue(team);
+                    }
                     setIsLoading(false);
                 }, throwable -> {
                     setIsLoading(false);
                 }));
 
+    }
+
+    private void saveDataLocal(Team team) {
+        getCompositeDisposable().add(getDataManager().insertTeam(team)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(aBoolean -> {
+                    Log.w("here", String.valueOf(aBoolean));
+                }, throwable -> {
+                    Log.w("here", throwable.getMessage());
+                }));
     }
 
     public ObservableField<Team> getTeam() {

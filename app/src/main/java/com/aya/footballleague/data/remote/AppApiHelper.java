@@ -12,6 +12,8 @@ import com.aya.footballleague.data.remote.volleyManager.VolleyInterActor;
 import com.aya.footballleague.utils.AppConstants;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -42,10 +44,10 @@ public class AppApiHelper implements ApiHelper {
 
 
     @Override
-    public Single<LeaguesResponse> getLeagues(String apiToken) {
-        return Single.create(new SingleOnSubscribe<LeaguesResponse>() {
+    public Single<List<LeaguesResponse.League>> getLeagues(String apiToken) {
+        return Single.create(new SingleOnSubscribe<List<LeaguesResponse.League>>() {
             @Override
-            public void subscribe(SingleEmitter<LeaguesResponse> e) throws Exception {
+            public void subscribe(SingleEmitter<List<LeaguesResponse.League>> e) throws Exception {
                 volleyInterActor.mRequest(ApiEndPoint.ENDPOINT_LEAGUES, AppConstants.GET_METHOD,
                         null, new VolleyCallback() {
                             @Override
@@ -53,7 +55,7 @@ public class AppApiHelper implements ApiHelper {
                                 if (response != null) {
                                     Log.i("response", response);
                                     LeaguesResponse leaguesResponse = gson.fromJson(response, LeaguesResponse.class);
-                                    e.onSuccess(leaguesResponse);
+                                    e.onSuccess(leaguesResponse.getCompetitions());
                                 }
                             }
 
@@ -66,7 +68,7 @@ public class AppApiHelper implements ApiHelper {
                             public void onErrorCode(String response) {
                                 Log.i("response", response);
                                 LeaguesResponse leaguesResponse = gson.fromJson(response, LeaguesResponse.class);
-                                e.onSuccess(leaguesResponse);
+                                e.onSuccess(leaguesResponse.getCompetitions());
                             }
                         }, true, volleyInterActor.AuthorizationHeader(apiToken));
             }

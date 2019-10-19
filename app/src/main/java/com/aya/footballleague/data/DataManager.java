@@ -1,14 +1,22 @@
 package com.aya.footballleague.data;
 
 
+import com.aya.footballleague.data.local.db.DbHelper;
+import com.aya.footballleague.data.local.prefs.PreferencesHelper;
+import com.aya.footballleague.data.model.LeaguesResponse;
+import com.aya.footballleague.data.model.Team;
+import com.aya.footballleague.data.model.TeamsResponse;
 import com.aya.footballleague.data.remote.ApiHelper;
-import com.aya.footballleague.data.prefs.PreferencesHelper;
+
+import java.util.List;
+
+import io.reactivex.Single;
 
 /**
  * Created by aya mohamed on 08/02/18.
  */
 
-public interface DataManager extends PreferencesHelper, ApiHelper {
+public interface DataManager extends PreferencesHelper, ApiHelper, DbHelper {
 
     enum LoggedInMode {
 
@@ -26,4 +34,10 @@ public interface DataManager extends PreferencesHelper, ApiHelper {
         }
 
     }
+
+    Single<List<LeaguesResponse.League>> getLeaguesData(String apiToken);
+
+    Single<TeamsResponse> getTeamsData(String apiToken, String league_id);
+
+    Single<Team> getTeamData(String apiToken, String team_id);
 }

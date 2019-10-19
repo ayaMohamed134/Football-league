@@ -1,4 +1,4 @@
-package com.aya.footballleague.data.prefs;
+package com.aya.footballleague.data.local.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;

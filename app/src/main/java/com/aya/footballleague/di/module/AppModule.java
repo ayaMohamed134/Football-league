@@ -3,11 +3,16 @@ package com.aya.footballleague.di.module;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.room.Room;
+
 import com.aya.footballleague.constants.ViewModelProviderFactory;
 import com.aya.footballleague.data.AppDataManager;
 import com.aya.footballleague.data.DataManager;
-import com.aya.footballleague.data.prefs.AppPreferencesHelper;
-import com.aya.footballleague.data.prefs.PreferencesHelper;
+import com.aya.footballleague.data.local.db.AppDbHelper;
+import com.aya.footballleague.data.local.db.AppRoomDatabase;
+import com.aya.footballleague.data.local.db.DbHelper;
+import com.aya.footballleague.data.local.prefs.AppPreferencesHelper;
+import com.aya.footballleague.data.local.prefs.PreferencesHelper;
 import com.aya.footballleague.data.remote.ApiHelper;
 import com.aya.footballleague.data.remote.AppApiHelper;
 import com.aya.footballleague.di.DatabaseInfo;
@@ -82,5 +87,20 @@ public class AppModule {
     ViewModelProviderFactory provideViewModelProviderFactory(DataManager dataManager, SchedulerProvider schedulerProvider){
         return new ViewModelProviderFactory(dataManager, schedulerProvider);
     }
+
+    @Provides
+    @Singleton
+    AppRoomDatabase provideAppRoomDatabase(@DatabaseInfo String dbName, Context context) {
+        return Room.databaseBuilder(context.getApplicationContext(),
+                AppRoomDatabase.class, dbName).allowMainThreadQueries()
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    DbHelper provideDbHelper(AppDbHelper appDbHelper){
+        return appDbHelper;
+    }
+
 
 }

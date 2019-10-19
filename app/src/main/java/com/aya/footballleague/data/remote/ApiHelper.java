@@ -5,6 +5,8 @@ import com.aya.footballleague.data.model.LeaguesResponse;
 import com.aya.footballleague.data.model.Team;
 import com.aya.footballleague.data.model.TeamsResponse;
 
+import java.util.List;
+
 import io.reactivex.Single;
 
 /**
@@ -12,7 +14,7 @@ import io.reactivex.Single;
  */
 public interface ApiHelper {
 
-    Single<LeaguesResponse> getLeagues(String apiToken);
+    Single<List<LeaguesResponse.League>> getLeagues(String apiToken);
 
     Single<TeamsResponse> getTeams(String apiToken, String league_id);
 
