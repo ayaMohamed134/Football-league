@@ -19,6 +19,7 @@ public class TeamDetailsViewModel extends BaseViewModel {
 
     public final ObservableField<Team> team = new ObservableField<>();
     public final ObservableField<String> image = new ObservableField<>();
+    public final ObservableField<String> addToFav = new ObservableField<>();
     public final ObservableField<String> name = new ObservableField<>();
     public final ObservableField<String> shortName = new ObservableField<>();
     public final ObservableField<String> address = new ObservableField<>();
@@ -91,11 +92,28 @@ public class TeamDetailsViewModel extends BaseViewModel {
         }else {
             this.image.set(team.getCrestUrl());
         }
+        if (team.getIs_fav().equals(AppConstants.FAV_VALUE)){
+            this.addToFav.set("This item added to favorite");
+
+        }else {
+            this.addToFav.set("Add to favourite");
+        }
         playersLiveData.setValue(team.getSquad());
     }
 
     public void addPlayers(ArrayList<Player> players) {
         this.players.clear();
         this.players.addAll(players);
+    }
+
+    public void addToFavourite(){
+        getCompositeDisposable().add(getDataManager().addFav(AppConstants.FAV_VALUE, team.get().getId())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(aBoolean -> {
+                    this.addToFav.set("This item added to favorite");
+                }, throwable -> {
+                    Log.w("here", throwable.getMessage());
+                }));
     }
 }

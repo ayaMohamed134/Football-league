@@ -18,6 +18,7 @@ public final class AppConstants {
 
     public static final String API_TOKEN = "51b49189b7544549a97ba67191ea105d";
     public static final String DEFAULT_IMAGE = "https://i.ibb.co/5nPSYgf/index.png";
+    public static final String FAV_VALUE = "1";
 
     private AppConstants() {
         // This utility class is not publicly instantiable

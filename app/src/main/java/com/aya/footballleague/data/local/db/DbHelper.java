@@ -27,4 +27,7 @@ public interface DbHelper {
 
     Observable<Boolean> insertTeam(Team team);
 
+    Observable<Boolean> addFav(String is_fav, String team_id);
+
+    Observable<List<Team>> getFavTeams();
 }

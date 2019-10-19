@@ -16,4 +16,5 @@
     <string name="website">WebSite</string>
     <string name="email">Email:</string>
     <string name="list_of_players">Players:</string>
+    <string name="favorite_item">Add to favorite.</string>
 </resources>

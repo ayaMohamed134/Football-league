@@ -56,7 +56,14 @@ public class Team {
     @ColumnInfo(name = "squad")
     private ArrayList<Player> squad;
 
-    public Team(@NotNull String id, String name, String shortName, String crestUrl, String address, String website, String email, ArrayList<Player> squad) {
+    @Expose
+    @SerializedName("is_fav")
+    @ColumnInfo(name = "is_fav")
+    private String is_fav;
+
+
+    public Team(@NotNull String id, String name, String shortName, String crestUrl, String address, String website,
+                String email, ArrayList<Player> squad, String is_fav) {
         this.id = id;
         this.name = name;
         this.shortName = shortName;
@@ -65,6 +72,7 @@ public class Team {
         this.website = website;
         this.email = email;
         this.squad = squad;
+        this.is_fav = is_fav;
     }
 
     public String getId() {
@@ -99,6 +107,13 @@ public class Team {
         return squad;
     }
 
+    public String getIs_fav() {
+        if (is_fav == null){
+            return "0";
+        }else {
+            return is_fav;
+        }
+    }
 
     public void setId(@NotNull String id) {
         this.id = id;
@@ -132,6 +147,10 @@ public class Team {
         this.squad = squad;
     }
 
+    public void setIs_fav(String is_fav) {
+        this.is_fav = is_fav;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -161,6 +180,9 @@ public class Team {
             return false;
         }
         if (!squad.equals(team.squad)) {
+            return false;
+        }
+        if (!is_fav.equals(team.is_fav)) {
             return false;
         }
         return shortName.equals(team.shortName);

@@ -99,5 +99,26 @@ public class AppDbHelper implements DbHelper {
         });
     }
 
+    @Override
+    public Observable<Boolean> addFav(String is_fav, String team_id) {
+        return Observable.fromCallable(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                mAppRoomDatabase.teamDao().update(is_fav, team_id);
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public Observable<List<Team>> getFavTeams() {
+        return Observable.fromCallable(new Callable<List<Team>>() {
+            @Override
+            public List<Team> call() throws Exception {
+               return mAppRoomDatabase.teamDao().loadFavTeams();
+            }
+        });
+    }
+
 
 }

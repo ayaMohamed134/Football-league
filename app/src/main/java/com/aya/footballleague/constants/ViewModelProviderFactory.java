@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.aya.footballleague.data.DataManager;
+import com.aya.footballleague.ui.main.favouriteList.FavViewModel;
 import com.aya.footballleague.ui.main.leaguesList.LeaguesListViewModel;
 import com.aya.footballleague.ui.main.leaguesList.teamsList.TeamsListViewModel;
 import com.aya.footballleague.ui.main.leaguesList.teamsList.teamDetails.TeamDetailsViewModel;
@@ -42,6 +43,9 @@ public class ViewModelProviderFactory<V> extends ViewModelProvider.NewInstanceFa
         }else if (modelClass.isAssignableFrom(TeamDetailsViewModel.class)) {
             //noinspection unchecked
             return (T) new TeamDetailsViewModel(dataManager, schedulerProvider);
+        }else if (modelClass.isAssignableFrom(FavViewModel.class)) {
+            //noinspection unchecked
+            return (T) new FavViewModel(dataManager, schedulerProvider);
         }
         throw new IllegalArgumentException("Unknown class name: " + modelClass.getName());
     }

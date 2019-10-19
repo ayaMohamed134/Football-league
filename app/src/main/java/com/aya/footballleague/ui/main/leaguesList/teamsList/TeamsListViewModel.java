@@ -31,9 +31,10 @@ public class TeamsListViewModel extends BaseViewModel {
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(teamsResponse -> {
-                    if (teamsResponse.getTeams() != null && teamsResponse.getTeams().size() > 0)
+                    if (teamsResponse.getTeams() != null && teamsResponse.getTeams().size() > 0) {
                         saveDataLocal(teamsResponse);
                         teamsLiveData.setValue(teamsResponse.getTeams());
+                    }
                     setIsLoading(false);
                 }, throwable -> {
                     setIsLoading(false);

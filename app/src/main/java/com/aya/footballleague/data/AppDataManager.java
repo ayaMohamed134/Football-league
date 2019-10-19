@@ -88,6 +88,16 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<Boolean> addFav(String is_fav, String team_id) {
+        return mDbHelper.addFav(is_fav, team_id);
+    }
+
+    @Override
+    public Observable<List<Team>> getFavTeams() {
+        return mDbHelper.getFavTeams();
+    }
+
+    @Override
     public Single<List<LeaguesResponse.League>> getLeaguesData(String apiToken) {
         if (NetworkUtils.isNetworkConnected(mContext)) {
            return getLeagues(apiToken);

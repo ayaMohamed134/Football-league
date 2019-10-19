@@ -25,7 +25,11 @@
         android:id="@+id/favFragment"
         android:name="com.aya.footballleague.ui.main.favouriteList.FavFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_fav" />
+        tools:layout="@layout/fragment_fav" >
+        <action
+            android:id="@+id/action_favFragment_to_teamDetailsFragment"
+            app:destination="@id/teamDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/leaguesListFragment"
         android:name="com.aya.footballleague.ui.main.leaguesList.LeaguesListFragment"
