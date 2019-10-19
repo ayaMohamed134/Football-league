@@ -10,4 +10,10 @@
     <string name="no_items_found">No items found</string>
     <string name="retry">Retry</string>
     <string name="short_name">Short name:</string>
+    <string name="position">Position</string>
+    <string name="nationality">Nationality</string>
+    <string name="address">Address:</string>
+    <string name="website">WebSite</string>
+    <string name="email">Email:</string>
+    <string name="list_of_players">Players:</string>
 </resources>

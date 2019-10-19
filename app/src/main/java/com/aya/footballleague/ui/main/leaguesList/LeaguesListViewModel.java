@@ -25,7 +25,7 @@ public class LeaguesListViewModel extends BaseViewModel {
 
     public void fetchLeagues() {
         setIsLoading(true);
-        getCompositeDisposable().add(getDataManager().getLeagues(AppConstants.API_TOKEN, AppConstants.AREAS_VALUE)
+        getCompositeDisposable().add(getDataManager().getLeagues(AppConstants.API_TOKEN)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(leaguesResponse -> {

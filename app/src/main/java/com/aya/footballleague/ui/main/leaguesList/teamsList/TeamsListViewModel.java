@@ -22,9 +22,9 @@ public class TeamsListViewModel extends BaseViewModel {
         teamsLiveData = new MutableLiveData<>();
     }
 
-    public void fetchTeams(String team_id) {
+    public void fetchTeams(String league_id) {
         setIsLoading(true);
-        getCompositeDisposable().add(getDataManager().getTeams(AppConstants.API_TOKEN, team_id)
+        getCompositeDisposable().add(getDataManager().getTeams(AppConstants.API_TOKEN, league_id)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(teamsResponse -> {

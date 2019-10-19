@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.aya.footballleague.ui.adapters.TeamItemViewModel" />
+            type="com.aya.footballleague.ui.adapters.PlayerItemViewModel" />
 
     </data>
 
@@ -14,22 +14,13 @@
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_5sdp"
-        android:onClick="@{() -> viewModel.onClickItem()}"
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:background="@color/cardview_dark_background"
         android:padding="@dimen/_20sdp"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_image"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:scaleType="centerInside"
-            app:imageUrl="@{viewModel.image}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+
 
         <TextView
             android:id="@+id/tv_name"
@@ -40,35 +31,58 @@
             android:text="@{viewModel.name}"
             android:textAlignment="viewStart"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="@string/position"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_position_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            tools:text="Defender"
+            android:text="@{viewModel.position}"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:layout_constraintStart_toEndOf="@id/tv_position"
             android:layout_marginStart="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/tv_short_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_nationality"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:text="@string/short_name"
+            android:text="@string/nationality"
             android:textAlignment="viewStart"
             android:layout_marginTop="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
-            app:layout_constraintStart_toEndOf="@id/iv_image"
-            android:layout_marginStart="@dimen/_10sdp"
-            />
+            app:layout_constraintTop_toBottomOf="@id/tv_position"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
         <TextView
-            android:id="@+id/tv_short_name_value"
+            android:id="@+id/tv_nationality_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            tools:text="short"
-            android:text="@{viewModel.shortName}"
+            tools:text="Defender"
+            android:text="@{viewModel.nationality}"
             android:textAlignment="viewStart"
             android:layout_marginTop="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/tv_name"
-            app:layout_constraintStart_toEndOf="@id/tv_short_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_position"
+            app:layout_constraintStart_toEndOf="@id/tv_nationality"
             android:layout_marginStart="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"/>
 

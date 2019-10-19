@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.aya.footballleague.data.DataManager;
 import com.aya.footballleague.ui.main.leaguesList.LeaguesListViewModel;
 import com.aya.footballleague.ui.main.leaguesList.teamsList.TeamsListViewModel;
+import com.aya.footballleague.ui.main.leaguesList.teamsList.teamDetails.TeamDetailsViewModel;
 import com.aya.footballleague.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
@@ -38,6 +39,9 @@ public class ViewModelProviderFactory<V> extends ViewModelProvider.NewInstanceFa
         }else if (modelClass.isAssignableFrom(TeamsListViewModel.class)) {
             //noinspection unchecked
             return (T) new TeamsListViewModel(dataManager, schedulerProvider);
+        }else if (modelClass.isAssignableFrom(TeamDetailsViewModel.class)) {
+            //noinspection unchecked
+            return (T) new TeamDetailsViewModel(dataManager, schedulerProvider);
         }
         throw new IllegalArgumentException("Unknown class name: " + modelClass.getName());
     }

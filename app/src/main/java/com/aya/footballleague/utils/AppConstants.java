@@ -17,7 +17,7 @@ public final class AppConstants {
     public static final String DB_NAME = "local.db";
 
     public static final String API_TOKEN = "51b49189b7544549a97ba67191ea105d";
-    public static final String AREAS_VALUE = "2000,2001,2002,2003,2013,2014,2015,2016,2017,2018,2019,2021";
+    public static final String DEFAULT_IMAGE = "https://i.ibb.co/5nPSYgf/index.png";
 
     private AppConstants() {
         // This utility class is not publicly instantiable

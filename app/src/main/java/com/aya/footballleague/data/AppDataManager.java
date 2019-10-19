@@ -2,6 +2,7 @@ package com.aya.footballleague.data;
 
 import android.content.Context;
 
+import com.aya.footballleague.data.model.Team;
 import com.aya.footballleague.data.model.TeamsResponse;
 import com.aya.footballleague.data.remote.ApiHelper;
 import com.aya.footballleague.data.model.LeaguesResponse;
@@ -35,12 +36,17 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<LeaguesResponse> getLeagues(String apiToken, String areasValue) {
-        return mApiHelper.getLeagues(apiToken, areasValue);
+    public Single<LeaguesResponse> getLeagues(String apiToken) {
+        return mApiHelper.getLeagues(apiToken);
     }
 
     @Override
-    public Single<TeamsResponse> getTeams(String apiToken, String team_id) {
-        return mApiHelper.getTeams(apiToken, team_id);
+    public Single<TeamsResponse> getTeams(String apiToken, String league_id) {
+        return mApiHelper.getTeams(apiToken, league_id);
+    }
+
+    @Override
+    public Single<Team> getTeam(String apiToken, String team_id) {
+        return mApiHelper.getTeam(apiToken, team_id);
     }
 }

@@ -3,6 +3,7 @@ package com.aya.footballleague.ui.adapters;
 import androidx.databinding.ObservableField;
 
 import com.aya.footballleague.data.model.Team;
+import com.aya.footballleague.utils.AppConstants;
 
 public class TeamItemViewModel {
 
@@ -17,7 +18,11 @@ public class TeamItemViewModel {
         this.id = new ObservableField<>(team.getId());
         this.name = new ObservableField<>(team.getName());
         this.shortName = new ObservableField<>(team.getShortName());
-        this.image = new ObservableField<>(team.getCrestUrl());
+        if(team.getCrestUrl() == null){
+            this.image = new ObservableField<>(AppConstants.DEFAULT_IMAGE);
+        }else {
+            this.image = new ObservableField<>(team.getCrestUrl());
+        }
     }
 
     public void onClickItem(){

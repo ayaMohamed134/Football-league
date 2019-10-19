@@ -7,8 +7,10 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aya.footballleague.data.model.LeaguesResponse;
+import com.aya.footballleague.data.model.Player;
 import com.aya.footballleague.data.model.Team;
 import com.aya.footballleague.ui.adapters.LeagueAdapter;
+import com.aya.footballleague.ui.adapters.PlayerAdapter;
 import com.aya.footballleague.ui.adapters.TeamAdapter;
 import com.bumptech.glide.Glide;
 
@@ -23,6 +25,15 @@ public final class BindingUtils {
 
     private BindingUtils() {
         // This class is not publicly instantiable
+    }
+
+    @BindingAdapter({"adapter"})
+    public static void addPlayersItems(RecyclerView recyclerView, ArrayList<Player> players) {
+        PlayerAdapter adapter = (PlayerAdapter) recyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.clearItems();
+            adapter.addItems(players);
+        }
     }
 
     @BindingAdapter({"adapter"})

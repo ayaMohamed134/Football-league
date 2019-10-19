@@ -8,9 +8,10 @@ import com.aya.footballleague.BuildConfig;
  */
 public final class ApiEndPoint {
 
-    public static final String ENDPOINT_LEAGUES = BuildConfig.BASE_URL + "competitions";
+    public static final String ENDPOINT_LEAGUES = BuildConfig.BASE_URL + "competitions?plan=TIER_ONE";
     public static final String ENDPOINT_TEAMS = BuildConfig.BASE_URL + "competitions/";
-    public static final String TEAMS = "/teams";
+    public static final String TEAMS = "/teams/";
+    public static final String ENDPOINT_TEAM = BuildConfig.BASE_URL + "teams/";
 
     private ApiEndPoint() {
         // This class is not publicly instantiable
