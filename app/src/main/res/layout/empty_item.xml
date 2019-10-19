@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.aya.footballleague.ui.Adapters.EmptyItemViewModel" />
+            type="com.aya.footballleague.ui.adapters.EmptyItemViewModel" />
 
     </data>
 
@@ -13,11 +13,10 @@
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_5sdp"
-        android:background="@color/cardview_dark_background"
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:padding="@dimen/_20sdp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="match_parent"

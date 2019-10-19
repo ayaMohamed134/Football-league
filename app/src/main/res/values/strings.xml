@@ -9,4 +9,5 @@
     <string name="demo">Hello</string>
     <string name="no_items_found">No items found</string>
     <string name="retry">Retry</string>
+    <string name="short_name">Short name:</string>
 </resources>

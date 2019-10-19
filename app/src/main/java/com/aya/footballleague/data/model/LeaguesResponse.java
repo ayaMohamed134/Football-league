@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LeaguesResponse {
 
@@ -41,6 +43,8 @@ public class LeaguesResponse {
 
     public static class League {
 
+        private static final String AREAS = "areas";
+
         @Expose
         @SerializedName("id")
         private String id;
@@ -52,6 +56,12 @@ public class LeaguesResponse {
         @Expose
         @SerializedName("numberOfAvailableSeasons")
         private String numberOfAvailableSeasons;
+
+        public static Map<String, String> sendAreasValues(String areasValue) {
+            Map<String, String> map = new HashMap<>();
+            map.put(AREAS, areasValue);
+            return map;
+        }
 
         public String getId() {
             return id;

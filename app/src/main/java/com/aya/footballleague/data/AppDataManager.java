@@ -2,7 +2,8 @@ package com.aya.footballleague.data;
 
 import android.content.Context;
 
-import com.aya.footballleague.data.Remote.ApiHelper;
+import com.aya.footballleague.data.model.TeamsResponse;
+import com.aya.footballleague.data.remote.ApiHelper;
 import com.aya.footballleague.data.model.LeaguesResponse;
 import com.aya.footballleague.data.prefs.PreferencesHelper;
 import com.google.gson.Gson;
@@ -35,6 +36,11 @@ public class AppDataManager implements DataManager {
 
     @Override
     public Single<LeaguesResponse> getLeagues(String apiToken, String areasValue) {
-        return null;
+        return mApiHelper.getLeagues(apiToken, areasValue);
+    }
+
+    @Override
+    public Single<TeamsResponse> getTeams(String apiToken, String team_id) {
+        return mApiHelper.getTeams(apiToken, team_id);
     }
 }

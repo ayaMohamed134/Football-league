@@ -1,5 +1,6 @@
 package com.aya.footballleague.constants;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.LruCache;
@@ -19,14 +20,14 @@ import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasAndroidInjector;
+import dagger.android.HasActivityInjector;
 
 
-public final class AppController extends MultiDexApplication implements HasAndroidInjector {
+public final class AppController extends MultiDexApplication implements HasActivityInjector {
 
 
     @Inject
-    DispatchingAndroidInjector<Object> activityDispatchingAndroidInjector;
+    DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 
     private RequestQueue requestQueue;
     private static final String TAG = AppController.class.getSimpleName();
@@ -102,7 +103,7 @@ public final class AppController extends MultiDexApplication implements HasAndro
     }
 
     @Override
-    public AndroidInjector<Object> androidInjector() {
+    public AndroidInjector<Activity> activityInjector() {
         return activityDispatchingAndroidInjector;
     }
 }

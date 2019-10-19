@@ -1,7 +1,7 @@
 package com.aya.footballleague.data;
 
 
-import com.aya.footballleague.data.Remote.ApiHelper;
+import com.aya.footballleague.data.remote.ApiHelper;
 import com.aya.footballleague.data.prefs.PreferencesHelper;
 
 /**

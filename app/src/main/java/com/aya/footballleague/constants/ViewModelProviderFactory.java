@@ -1,14 +1,15 @@
 package com.aya.footballleague.constants;
 
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.aya.footballleague.data.DataManager;
-import com.aya.footballleague.ui.Main.LeaguesList.LeaguesListViewModel;
+import com.aya.footballleague.ui.main.leaguesList.LeaguesListViewModel;
+import com.aya.footballleague.ui.main.leaguesList.teamsList.TeamsListViewModel;
 import com.aya.footballleague.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 /**
  * created by Aya mohamed on 8/9/2018.
@@ -34,6 +35,9 @@ public class ViewModelProviderFactory<V> extends ViewModelProvider.NewInstanceFa
         if (modelClass.isAssignableFrom(LeaguesListViewModel.class)) {
             //noinspection unchecked
             return (T) new LeaguesListViewModel(dataManager, schedulerProvider);
+        }else if (modelClass.isAssignableFrom(TeamsListViewModel.class)) {
+            //noinspection unchecked
+            return (T) new TeamsListViewModel(dataManager, schedulerProvider);
         }
         throw new IllegalArgumentException("Unknown class name: " + modelClass.getName());
     }

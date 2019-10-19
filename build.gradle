@@ -49,7 +49,7 @@ ext {
     // App dependencies
     nav_version = '2.1.0'
     appCompatVersion = '1.0.2'
-    daggerVer = '2.24'
+    daggerVer = '2.16'
     androidXAnnotations = '1.0.1'
     androidXMutidex = '2.0.0'
     intuit = '1.0.6'

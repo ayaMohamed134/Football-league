@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.aya.footballleague.ui.Main.Splash.SplashFragment"
+        android:name="com.aya.footballleague.ui.main.splash.SplashFragment"
         android:label="splash"
         tools:layout="@layout/fragment_splash">
         <action
@@ -23,12 +23,12 @@
     </fragment>
     <fragment
         android:id="@+id/favFragment"
-        android:name="com.aya.footballleague.ui.Main.FavouritList.FavFragment"
+        android:name="com.aya.footballleague.ui.main.favouriteList.FavFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_fav" />
     <fragment
         android:id="@+id/leaguesListFragment"
-        android:name="com.aya.footballleague.ui.Main.LeaguesList.LeaguesListFragment"
+        android:name="com.aya.footballleague.ui.main.leaguesList.LeaguesListFragment"
         android:label="Leagues"
         tools:layout="@layout/fragment_leagues_list">
         <action
@@ -41,14 +41,25 @@
     </fragment>
     <fragment
         android:id="@+id/teamDetailsFragment"
-        android:name="com.aya.footballleague.ui.Main.LeaguesList.TeamsList.TeamDetails.TeamDetailsFragment"
+        android:name="com.aya.footballleague.ui.main.leaguesList.teamsList.teamDetails.TeamDetailsFragment"
         android:label="Team details"
-        tools:layout="@layout/fragment_team_details" />
+        tools:layout="@layout/fragment_team_details">
+        <argument
+            android:name="team_id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/teamsListFragment"
-        android:name="com.aya.footballleague.ui.Main.LeaguesList.TeamsList.TeamsListFragment"
+        android:name="com.aya.footballleague.ui.main.leaguesList.teamsList.TeamsListFragment"
         android:label="Team list"
         tools:layout="@layout/fragment_teams_list">
+        <argument
+            android:name="league_id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_teamsListFragment_to_teamDetailsFragment"
             app:destination="@id/teamDetailsFragment"
